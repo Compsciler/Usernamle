@@ -2,6 +2,7 @@ import { MAX_CHALLENGES } from '../../constants/settings'
 import { CompletedRow } from './CompletedRow'
 import { CurrentRow } from './CurrentRow'
 import { EmptyRow } from './EmptyRow'
+import { HintRow } from './HintRow'
 
 type Props = {
   solution: string
@@ -25,6 +26,8 @@ export const Grid = ({
 
   return (
     <>
+      <HintRow solution={solution} />
+      <br />
       {guesses.map((guess, i) => (
         <CompletedRow
           key={i}
