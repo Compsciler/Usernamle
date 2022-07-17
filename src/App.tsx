@@ -52,6 +52,8 @@ import { useMatch } from 'react-router-dom'
 import { getWordBySolutionIndex } from './lib/words'
 import { exampleIds } from './constants/exampleIds'
 
+import { getHintWord } from './components/grid/HintRow'
+
 function App() {
   const isPlayingDaily = useMatch('/') !== null
   const exampleMatch = useMatch('/examples/:id')
@@ -102,6 +104,11 @@ function App() {
   )
   const [isHighContrastMode, setIsHighContrastMode] = useState(
     getStoredIsHighContrastMode()
+  )
+  const [isManualShareText, setIsManualShareText] = useState(
+    localStorage.getItem('manualShare')
+      ? localStorage.getItem('manualShare') === 'on'
+      : false
   )
   const [isRevealing, setIsRevealing] = useState(false)
 
@@ -193,6 +200,11 @@ function App() {
   const handleHighContrastMode = (isHighContrast: boolean) => {
     setIsHighContrastMode(isHighContrast)
     setStoredIsHighContrastMode(isHighContrast)
+  }
+
+  const handleManualShareText = (isManual: boolean) => {
+    setIsManualShareText(isManual)
+    localStorage.setItem('manualShare', isManual ? 'on' : 'off')
   }
 
   const clearCurrentRowClass = () => {
@@ -345,9 +357,11 @@ function App() {
   ) => {
     // event.preventDefault()
     const emojiGrid = generateDefaultEmojiGrid(solution, guesses)
+    const hintWord = getHintWord(solution)
     const scoreObject = {
       solutionIndex,
       solution,
+      hintWord,
       guesses,
       lost,
       isHardMode,
@@ -415,6 +429,7 @@ function App() {
           isHighContrastMode={isHighContrastMode}
           numberOfGuessesMade={guesses.length}
           isPlayingExample={isPlayingExample}
+          isManualShareText={isManualShareText}
         />
         <SettingsModal
           isOpen={isSettingsModalOpen}
@@ -425,6 +440,8 @@ function App() {
           handleDarkMode={handleDarkMode}
           isHighContrastMode={isHighContrastMode}
           handleHighContrastMode={handleHighContrastMode}
+          isManualShareText={isManualShareText}
+          handleManualShareText={handleManualShareText}
         />
         <AlertContainer />
       </div>

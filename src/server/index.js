@@ -13,6 +13,7 @@ mongoose.connect(url)
 const scoreSchema = new mongoose.Schema({
     solutionIndex: Number,
     solution: String,
+    hintWord: String,
     guesses: [String],
     lost: Boolean,
     isHardMode: Boolean,

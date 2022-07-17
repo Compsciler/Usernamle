@@ -1,3 +1,4 @@
+import { getHintWord } from '../components/grid/HintRow'
 import { unicodeSplit } from './words'
 
 export type CharStatus = 'absent' | 'present' | 'correct'
@@ -8,6 +9,8 @@ export const getStatuses = (
 ): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
   const splitSolution = unicodeSplit(solution)
+
+  guesses = [getHintWord(solution)].concat(guesses)
 
   guesses.forEach((word) => {
     unicodeSplit(word).forEach((letter, i) => {
