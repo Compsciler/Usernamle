@@ -3,6 +3,7 @@ import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 import { isValidKey } from '../components/keyboard/Keyboard'
+import { getHintWord } from '../components/grid/HintRow'
 
 export const isWordInWordList = (word: string) => {
   return (
@@ -27,6 +28,7 @@ export const isWinningWordOfDay = (word: string) => {
 // guess must use correct letters in that space and any other revealed letters
 // also check if all revealed instances of a letter are used (i.e. two C's)
 export const findFirstUnusedReveal = (word: string, guesses: string[], solution: string) => {
+  guesses = [getHintWord(solution)].concat(guesses)
   if (guesses.length === 0) {
     return false
   }
