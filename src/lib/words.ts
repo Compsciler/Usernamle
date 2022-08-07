@@ -5,7 +5,7 @@ import { default as GraphemeSplitter } from 'grapheme-splitter'
 import { isValidKey } from '../components/keyboard/Keyboard'
 import { getHintWord } from '../components/grid/HintRow'
 
-export const isWordInWordList = (word: string) => {
+export const isWordInWordList = (word: string, solution: string) => {
   return (
     WORDS.includes(localeAwareLowerCase(word)) ||
     isValidWord(word, solution)
