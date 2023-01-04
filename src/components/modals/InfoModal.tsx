@@ -11,7 +11,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose} isWide={true}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         Guess the username in 10 tries. After each guess, the color of the tiles will
-        change to show how close your guess was to the username. 
+        change to show how close your guess was to the username.
       </p>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         You may input any sequence of characters for each guess.
@@ -20,7 +20,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       <br />
       <p className="text-sm text-gray-500 dark:text-gray-300">
         Some of the characters in the username will be revealed as a clue.
-        The username comes from one of the 10,000 users by comment count on Reddit (as of November 2017). 
+        The username comes from one of the 10,000 users by comment count on Reddit (as of November 2017).
         Hyphens in the username are replaced by underscores.
       </p>
       <br />
@@ -74,7 +74,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="E" />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        There are at least two underscores in the username, 
+        There are at least two underscores in the username,
         and both of the ones in the guess are in the wrong spot.
       </p>
 
